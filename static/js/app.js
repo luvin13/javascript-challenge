@@ -5,10 +5,10 @@ var tableData = data;
 var tbody = d3.select("tbody");
 var button = d3.select("#filter-btn");
 var input1 = d3.select("#datetime");
-var input2 = d3.select("city");
-var input3 = d3.select("state");
-var input4 = d3.select("country");
-var input5 = d3.select("shape");
+var input2 = d3.select("#city");
+var input3 = d3.select("#state");
+var input4 = d3.select("#country");
+var input5 = d3.select("#shape");
 var resetbtn = d3.select("#reset-btn");
 var columns = ["datetime", "city", "state", "country", "shape", "durationMinutes", "comments"]
 
@@ -26,9 +26,8 @@ populate(data);
 
 //Filter Button
 
-button.on("click", () => {
-    d3.event.prevent
-    Default();
+d3.select("#filter-btn").on("click", () => {
+    d3.event.preventDefault();
     var inputDate = input1.property("value").trim();
     var inputCity = input2.property("value").toLowerCase().trim();
     var inputState = input3.property("value").toLowerCase().trim();
@@ -41,11 +40,11 @@ button.on("click", () => {
     console.log(filterDate)
     var filterCity = data.filter(data => data.city === inputCity);
     console.log(filterCity)
-    var filterState = date.filter(date => data.state === inputState);
+    var filterState = data.filter(data => data.state === inputState);
     console.log(filterState)
-    var filterCountry = date.filter(date => data.country === inputCountry);
+    var filterCountry = data.filter(data => data.country === inputCountry);
     console.log(filterCountry)
-    var filterShape = date.filter(date => date.shape === inputShape);
+    var filterShape = data.filter(data => data.shape === inputShape);
     console.log(filterShape)
     var filterData = data.filter(data => data.datetime === inputDate && data.city === inputCity && data.state === inputState && data.country === inputCountry && data.shape === inputShape);
     console.log(filterData)
